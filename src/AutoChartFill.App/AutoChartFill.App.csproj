@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoChartFill.Core\AutoChartFill.Core.csproj" />
+    <ProjectReference Include="..\AutoChartFill.GameBridge\AutoChartFill.GameBridge.csproj" />
+    <ProjectReference Include="..\AutoChartFill.Excel\AutoChartFill.Excel.csproj" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+  </ItemGroup>
+  <Target Name="CopyRelay" AfterTargets="Build" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.exe')">
+    <ItemGroup><RelayFiles Include="$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.*" /></ItemGroup>
+    <Copy SourceFiles="@(RelayFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="PublishRelay" AfterTargets="Publish" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.exe')">
+    <ItemGroup><RelayFiles Include="$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.*" /></ItemGroup>
+    <Copy SourceFiles="@(RelayFiles)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <ItemGroup>
+    <Resource Include="Assets\Icon.ico" />
+    <Content Include="Assets\Memories_Sacrifice_jacket.png" Link="Memories_Sacrifice_jacket.png"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+  </ItemGroup>
+</Project>
