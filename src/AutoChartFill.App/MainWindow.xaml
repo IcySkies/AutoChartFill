@@ -16,6 +16,7 @@
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
                     <CheckBox Content="Capture" IsChecked="{Binding Settings.CaptureEnabled, Mode=TwoWay}" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,18,0" Checked="CaptureChanged" Unchecked="CaptureChanged"/>
                     <Button Content="Retry" Click="Retry_Click" IsEnabled="{Binding HasPendingRender}"/>
+                    <Button Content="Find Relay" Click="FindRelay_Click"/>
                     <Button Content="Reset tracking" Click="Reset_Click" Margin="0"/>
                 </StackPanel>
             </DockPanel>

@@ -17,6 +17,7 @@ public partial class MainWindow : Window
 
     private async void SaveSettings_Click(object sender, RoutedEventArgs e) { if (ViewModel is not null) await ViewModel.SaveSettingsAsync(); }
     private async void Retry_Click(object sender, RoutedEventArgs e) { if (ViewModel is not null) await ViewModel.RetryAsync(); }
+    private async void FindRelay_Click(object sender, RoutedEventArgs e) { if (ViewModel is not null) await ViewModel.FindRelayAsync(); }
     private async void CaptureChanged(object sender, RoutedEventArgs e) { if (ViewModel is not null) await ViewModel.SetCaptureEnabledAsync(ViewModel.Settings.CaptureEnabled); }
 
     private async void Reset_Click(object sender, RoutedEventArgs e)

@@ -10,14 +10,15 @@
     <ProjectReference Include="..\AutoChartFill.Core\AutoChartFill.Core.csproj" />
     <ProjectReference Include="..\AutoChartFill.GameBridge\AutoChartFill.GameBridge.csproj" />
     <ProjectReference Include="..\AutoChartFill.Excel\AutoChartFill.Excel.csproj" />
+    <ProjectReference Include="..\..\..\In-gameInfoAPI\VividStasisGameInfoRelay\VividStasisGameInfoRelay.csproj" ReferenceOutputAssembly="false" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
   </ItemGroup>
-  <Target Name="CopyRelay" AfterTargets="Build" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.exe')">
-    <ItemGroup><RelayFiles Include="$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.*" /></ItemGroup>
+  <Target Name="CopyRelay" AfterTargets="Build">
+    <ItemGroup><RelayFiles Include="$(MSBuildProjectDirectory)\..\..\..\In-gameInfoAPI\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.*" /></ItemGroup>
     <Copy SourceFiles="@(RelayFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
   </Target>
-  <Target Name="PublishRelay" AfterTargets="Publish" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.exe')">
-    <ItemGroup><RelayFiles Include="$(MSBuildProjectDirectory)\..\..\..\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.*" /></ItemGroup>
+  <Target Name="PublishRelay" AfterTargets="Publish">
+    <ItemGroup><RelayFiles Include="$(MSBuildProjectDirectory)\..\..\..\In-gameInfoAPI\VividStasisGameInfoRelay\bin\$(Configuration)\net8.0-windows\VividStasisGameInfoRelay.*" /></ItemGroup>
     <Copy SourceFiles="@(RelayFiles)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
   </Target>
   <ItemGroup>

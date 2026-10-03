@@ -75,6 +75,12 @@ public sealed class MainViewModel : ObservableObject
         if (HasPendingRender) await RetryAsync();
     }
 
+    public async Task FindRelayAsync()
+    {
+        BridgeText = "Searching for a running API relay...";
+        await _gameSource.FindRelayAsync();
+    }
+
     public async Task SelectWorkbookAsync(string path)
     {
         if (IsMappingLocked) return;

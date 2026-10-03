@@ -39,6 +39,8 @@ public sealed class TcpGameEventSource : IGameEventSource
         return Task.CompletedTask;
     }
 
+    public Task FindRelayAsync() => Task.CompletedTask;
+
     private async Task AcceptLoopAsync(CancellationToken cancellationToken)
     {
         try

@@ -9,5 +9,6 @@ public interface IGameEventSource : IAsyncDisposable
     event EventHandler<GameEventEnvelope>? EventReceived;
     event EventHandler<string>? StatusChanged;
     Task StartAsync(CancellationToken cancellationToken = default);
+    Task FindRelayAsync();
     Task StopAsync();
 }
